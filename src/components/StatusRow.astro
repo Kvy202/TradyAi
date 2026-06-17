@@ -1,0 +1,77 @@
+---
+import StatusDot from "./StatusDot.astro";
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<div class="row mono">
+  <span class="short">{project.short}</span>
+  <span class="tagline">{project.tagline}</span>
+  <span class="state">
+    <StatusDot status="dev" />
+    in dev
+  </span>
+</div>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.95rem 1.25rem;
+    font-size: 13px;
+    border-top: 1px solid var(--border-soft);
+    transition: background 150ms ease;
+  }
+
+  .row:first-child {
+    border-top: 0;
+  }
+
+  .row:hover {
+    background: var(--bg-chrome);
+  }
+
+  .short {
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .tagline {
+    color: var(--text-faint);
+  }
+
+  .state {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    justify-self: end;
+  }
+
+  @media (max-width: 560px) {
+    .row {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "short state"
+        "tag tag";
+      row-gap: 0.45rem;
+    }
+
+    .short {
+      grid-area: short;
+    }
+    .state {
+      grid-area: state;
+    }
+    .tagline {
+      grid-area: tag;
+    }
+  }
+</style>

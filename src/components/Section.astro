@@ -10,7 +10,7 @@ const { id, label, class: className } = Astro.props;
 
 <section id={id} class:list={["section", className]}>
   <div class="container">
-    {label && <p class="mono section-label">{label}</p>}
+    {label && <h2 class="mono section-label">{label}</h2>}
     <slot />
   </div>
 </section>
@@ -30,6 +30,7 @@ const { id, label, class: className } = Astro.props;
   .section-label {
     margin: 0 0 1.75rem;
     font-size: 11px;
+    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-faint);

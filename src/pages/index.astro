@@ -4,6 +4,12 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Section from "../components/Section.astro";
 import Hero from "../components/Hero.astro";
+import ProductCard from "../components/ProductCard.astro";
+import StatusRow from "../components/StatusRow.astro";
+import { projects } from "../data/projects";
+
+const liveProjects = projects.filter((p) => p.status === "live");
+const devProjects = projects.filter((p) => p.status === "dev");
 ---
 
 <Base>
@@ -22,12 +28,16 @@ import Hero from "../components/Hero.astro";
   <main>
     <Hero />
 
-    <Section id="work" label="work — phase 4">
-      <p style="color: var(--text-muted); margin: 0;">Live products go here.</p>
+    <Section id="work" label="work">
+      <div class="cards">
+        {liveProjects.map((p) => <ProductCard project={p} />)}
+      </div>
     </Section>
 
-    <Section id="building" label="building — phase 4">
-      <p style="color: var(--text-muted); margin: 0;">In-dev projects go here.</p>
+    <Section id="building" label="building">
+      <div class="building-panel">
+        {devProjects.map((p) => <StatusRow project={p} />)}
+      </div>
     </Section>
 
     <Section id="about" label="about — phase 5">
@@ -66,5 +76,26 @@ import Hero from "../components/Hero.astro";
 
   .ticker .val {
     color: var(--text-faint);
+  }
+
+  /* Work — two cards side by side, stacked on mobile */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Building — one bordered panel holding the terminal-style status rows */
+  .building-panel {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
   }
 </style>

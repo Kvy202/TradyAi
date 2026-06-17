@@ -1,0 +1,136 @@
+---
+import StatusDot from "./StatusDot.astro";
+import Chip from "./Chip.astro";
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const stateLabel = project.status === "live" ? "live" : "in dev";
+---
+
+<article class="card">
+  <div class="card-head mono">
+    <span class="short">{project.short}</span>
+    <span class="status">
+      <StatusDot status={project.status} />
+      {stateLabel}
+    </span>
+  </div>
+
+  <h3 class="tagline">{project.tagline}</h3>
+  <p class="desc">{project.description}</p>
+
+  <ul class="tech">
+    {project.tech.map((t) => <li><Chip>{t}</Chip></li>)}
+  </ul>
+
+  <div class="links mono">
+    {
+      project.url && (
+        <a class="link" href={project.url} target="_blank" rel="noopener noreferrer">
+          Visit
+          <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5.5 10.5 11 5M6.5 5H11v4.5" />
+          </svg>
+        </a>
+      )
+    }
+    {
+      project.repo && (
+        <a class="link" href={project.repo} target="_blank" rel="noopener noreferrer">
+          Code
+          <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5.5 10.5 11 5M6.5 5H11v4.5" />
+          </svg>
+        </a>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  .short {
+    color: var(--text);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--text-muted);
+  }
+
+  .tagline {
+    margin: 1rem 0 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .desc {
+    margin: 0.65rem 0 0;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    /* push links to the card's bottom so side-by-side cards align */
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 13px;
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .link:hover {
+    color: var(--text);
+  }
+
+  .link:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+</style>

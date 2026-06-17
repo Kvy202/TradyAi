@@ -1,0 +1,29 @@
+---
+interface Props {
+  status: "live" | "dev";
+  class?: string;
+}
+
+const { status, class: className } = Astro.props;
+---
+
+<span class:list={["dot", `dot-${status}`, className]} aria-hidden="true"></span>
+
+<style>
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-live {
+    background: var(--accent);
+  }
+
+  .dot-dev {
+    background: transparent;
+    border: 1px solid var(--text-faint);
+  }
+</style>

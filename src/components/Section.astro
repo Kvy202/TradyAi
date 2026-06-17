@@ -1,0 +1,36 @@
+---
+interface Props {
+  id?: string;
+  label?: string;
+  class?: string;
+}
+
+const { id, label, class: className } = Astro.props;
+---
+
+<section id={id} class:list={["section", className]}>
+  <div class="container">
+    {label && <p class="mono section-label">{label}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--section-pad);
+  }
+
+  .container {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  .section-label {
+    margin: 0 0 1.75rem;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+</style>

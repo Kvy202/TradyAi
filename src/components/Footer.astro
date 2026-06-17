@@ -1,0 +1,94 @@
+---
+import { profile } from "../data/profile";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="wordmark mono" href="#top" aria-label={`${profile.wordmark} — home`}>
+      <span class="mark" aria-hidden="true"></span>
+      <span>{profile.wordmark}</span>
+    </a>
+
+    <nav class="footer-links mono" aria-label="Footer">
+      <a href="#work">work</a>
+      <a href="#building">building</a>
+      <a href="#about">about</a>
+      <a href={profile.github} target="_blank" rel="noopener noreferrer">github</a>
+    </nav>
+
+    <span class="copy mono">© {year}</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-chrome);
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: 1.75rem var(--container-pad);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .mark {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 13px;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--text);
+  }
+
+  .copy {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  .wordmark:focus-visible,
+  .footer-links a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .copy {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+</style>

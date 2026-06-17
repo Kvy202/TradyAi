@@ -1,0 +1,112 @@
+---
+import { profile } from "../data/profile";
+---
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark mono" href="#top" aria-label={`${profile.wordmark} — home`}>
+      <span class="mark" aria-hidden="true"></span>
+      <span>{profile.wordmark}</span>
+    </a>
+
+    <nav class="nav-links mono" aria-label="Primary">
+      <a href="#work">work</a>
+      <a href="#building">building</a>
+      <a href="#about">about</a>
+      <a
+        class="nav-gh"
+        href={profile.github}
+        target="_blank"
+        rel="noopener noreferrer">github</a
+      >
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg-chrome);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: 0.7rem var(--container-pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.25rem;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .mark {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 13px;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition:
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .nav-gh {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .nav-gh:hover {
+    border-color: var(--text-faint);
+  }
+
+  .wordmark:focus-visible,
+  .nav-links a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Collapse into a compact stacked menu under ~640px */
+  @media (max-width: 640px) {
+    .nav-links {
+      width: 100%;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+
+    .nav-gh {
+      margin-left: auto;
+    }
+  }
+</style>

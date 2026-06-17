@@ -1,10 +1,74 @@
 ---
 import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Section from "../components/Section.astro";
 ---
 
 <Base>
-  <main style="padding: var(--section-pad) var(--container-pad); max-width: var(--container); margin-inline: auto;">
-    <h1 style="font-weight: 500; letter-spacing: -0.01em;">tradyai</h1>
-    <p class="mono" style="color: var(--text-muted);">phase 0 — setup &amp; tokens</p>
+  {/* Ticker strip — Phase 7 replaces this with <Ticker client:load />. */}
+  {/* No fake numbers: values are dim placeholders until the live island mounts. */}
+  <div class="ticker" aria-label="Crypto ticker">
+    <div class="ticker-inner mono">
+      <span class="ticker-item"><span class="sym">BTC</span><span class="val">—</span></span>
+      <span class="ticker-item"><span class="sym">ETH</span><span class="val">—</span></span>
+      <span class="ticker-item"><span class="sym">SOL</span><span class="val">—</span></span>
+    </div>
+  </div>
+
+  <Nav />
+
+  <main>
+    <Section id="top" label="hero — phase 3">
+      <h1 style="font-weight: 500; letter-spacing: -0.01em; margin: 0;">tradyai</h1>
+      <p class="mono" style="color: var(--text-muted); margin-top: 0.75rem;">
+        shell in place — hero lands in phase 3
+      </p>
+    </Section>
+
+    <Section id="work" label="work — phase 4">
+      <p style="color: var(--text-muted); margin: 0;">Live products go here.</p>
+    </Section>
+
+    <Section id="building" label="building — phase 4">
+      <p style="color: var(--text-muted); margin: 0;">In-dev projects go here.</p>
+    </Section>
+
+    <Section id="about" label="about — phase 5">
+      <p style="color: var(--text-muted); margin: 0;">About + contact go here.</p>
+    </Section>
   </main>
+
+  <Footer />
 </Base>
+
+<style>
+  .ticker {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .ticker-inner {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: 0.4rem var(--container-pad);
+    display: flex;
+    gap: 1.75rem;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+
+  .ticker .sym {
+    color: var(--text-muted);
+  }
+
+  .ticker .val {
+    color: var(--text-faint);
+  }
+</style>

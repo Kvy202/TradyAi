@@ -18,6 +18,7 @@ const { id, label, class: className } = Astro.props;
 <style>
   .section {
     padding-block: var(--section-pad);
+    scroll-margin-top: 64px; /* clear the sticky nav on anchor jumps */
   }
 
   .container {

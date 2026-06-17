@@ -16,7 +16,7 @@
   --border-soft: #181c22; /* faint dividers */
   --text: #eef1f4;        /* primary text */
   --text-muted: #8b939e;  /* secondary text */
-  --text-faint: #5b626c;  /* tertiary / metadata */
+  --text-faint: #828a94;  /* tertiary / metadata — lightened from #5b626c to pass WCAG AA */
   --accent: #34e3a4;      /* THE accent (mint-green) */
   --down: #ef6f6c;        /* negative price delta only */
 
@@ -59,6 +59,13 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Visible focus baseline for keyboard users. Low specificity (:where) so
+   component-level focus styles can refine it; outline is always present. */
+:where(a, button, input, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

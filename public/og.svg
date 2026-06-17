@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- flat, on-brand: near-black field, one elevated card, one accent colour -->
+  <rect width="1200" height="630" fill="#0b0d11" />
+  <rect x="48" y="48" width="1104" height="534" rx="18" fill="#0e1116" stroke="#20242c" stroke-width="1" />
+
+  <!-- wordmark: accent square + tradyai -->
+  <rect x="96" y="92" width="26" height="26" rx="3" fill="#34e3a4" />
+  <text x="138" y="114" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="36" fill="#eef1f4" letter-spacing="1">tradyai</text>
+
+  <!-- kicker -->
+  <circle cx="101" cy="170" r="5" fill="#34e3a4" />
+  <text x="118" y="177" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="19" fill="#828a94" letter-spacing="2">SYSTEM ONLINE · 2 LIVE, 3 IN DEV</text>
+
+  <!-- headline -->
+  <text x="94" y="318" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="56" font-weight="500" fill="#eef1f4" letter-spacing="-1">Building AI systems for trading,</text>
+  <text x="94" y="392" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="56" font-weight="500" fill="#eef1f4" letter-spacing="-1">crypto &amp; market intelligence.</text>
+
+  <!-- subline -->
+  <text x="96" y="452" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="25" fill="#8b939e">Designed, built &amp; deployed solo.</text>
+
+  <!-- faint sparkline -->
+  <polyline
+    points="96,548 200,540 304,553 408,531 512,540 616,519 720,529 824,511 928,523 1032,505 1104,514"
+    fill="none"
+    stroke="#34e3a4"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.5"
+  />
+</svg>

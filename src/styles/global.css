@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Self-hosted variable fonts (Fontsource) */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* ─────────────────────────────────────────────
+   Design tokens (LOCKED) — dark in all cases.
+   See build spec Section 3.
+   ───────────────────────────────────────────── */
+:root {
+  --bg: #0b0d11;          /* page background */
+  --bg-elev: #0e1116;     /* elevated panels / cards */
+  --bg-chrome: #15181e;   /* nav bar / footer surface */
+  --border: #20242c;      /* borders, dividers */
+  --border-soft: #181c22; /* faint dividers */
+  --text: #eef1f4;        /* primary text */
+  --text-muted: #8b939e;  /* secondary text */
+  --text-faint: #5b626c;  /* tertiary / metadata */
+  --accent: #34e3a4;      /* THE accent (mint-green) */
+  --down: #ef6f6c;        /* negative price delta only */
+
+  /* Layout */
+  --container: 1100px;
+  --container-pad: clamp(20px, 5vw, 40px);
+  --section-pad: clamp(64px, 10vh, 120px);
+
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter Variable", system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mono helper — labels, kickers, tickers, status text, terminal. */
+.mono {
+  font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

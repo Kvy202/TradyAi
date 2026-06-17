@@ -1,0 +1,80 @@
+/* Live crypto ticker strip. Marquee is functional, not decorative; it freezes
+   under prefers-reduced-motion. Accent only on positive deltas, --down on
+   negative — per the design system. */
+
+.tick {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+.tick-inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.tick-loading {
+  display: block;
+  padding: 0.4rem var(--container-pad);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.tick-track {
+  display: flex;
+  width: max-content;
+  animation: tick-scroll 45s linear infinite;
+}
+
+.tick:hover .tick-track {
+  animation-play-state: paused;
+}
+
+@keyframes tick-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tick-track {
+    animation: none;
+  }
+}
+
+.tick-seq {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.tick-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55ch;
+  padding: 0.4rem 1.25rem;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.tick-sym {
+  color: var(--text-muted);
+}
+
+.tick-price {
+  color: var(--text);
+}
+
+.tick-up {
+  color: var(--accent);
+}
+
+.tick-down {
+  color: var(--down);
+}

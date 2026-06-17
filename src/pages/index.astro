@@ -9,6 +9,7 @@ import StatusRow from "../components/StatusRow.astro";
 import Chip from "../components/Chip.astro";
 import Button from "../components/Button.astro";
 import Terminal from "../components/Terminal.tsx";
+import Ticker from "../components/Ticker.tsx";
 import { projects } from "../data/projects";
 import { profile, capabilities } from "../data/profile";
 
@@ -24,15 +25,8 @@ const socials = [
 ---
 
 <Base>
-  {/* Ticker strip — Phase 7 replaces this with <Ticker client:load />. */}
-  {/* No fake numbers: values are dim placeholders until the live island mounts. */}
-  <div class="ticker" aria-label="Crypto ticker">
-    <div class="ticker-inner mono">
-      <span class="ticker-item"><span class="sym">BTC</span><span class="val">—</span></span>
-      <span class="ticker-item"><span class="sym">ETH</span><span class="val">—</span></span>
-      <span class="ticker-item"><span class="sym">SOL</span><span class="val">—</span></span>
-    </div>
-  </div>
+  {/* Live crypto ticker (CoinGecko). Hides cleanly on failure — never fake numbers. */}
+  <Ticker client:load />
 
   <Nav />
 
@@ -88,35 +82,6 @@ const socials = [
 </Base>
 
 <style>
-  .ticker {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  .ticker-inner {
-    max-width: var(--container);
-    margin-inline: auto;
-    padding: 0.4rem var(--container-pad);
-    display: flex;
-    gap: 1.75rem;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-  }
-
-  .ticker-item {
-    display: inline-flex;
-    gap: 0.5rem;
-  }
-
-  .ticker .sym {
-    color: var(--text-muted);
-  }
-
-  .ticker .val {
-    color: var(--text-faint);
-  }
-
   /* Work — two cards side by side, stacked on mobile */
   .cards {
     display: grid;

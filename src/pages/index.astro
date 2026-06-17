@@ -6,10 +6,20 @@ import Section from "../components/Section.astro";
 import Hero from "../components/Hero.astro";
 import ProductCard from "../components/ProductCard.astro";
 import StatusRow from "../components/StatusRow.astro";
+import Chip from "../components/Chip.astro";
+import Button from "../components/Button.astro";
 import { projects } from "../data/projects";
+import { profile, capabilities } from "../data/profile";
 
 const liveProjects = projects.filter((p) => p.status === "live");
 const devProjects = projects.filter((p) => p.status === "dev");
+
+// Only render socials that are actually set in profile.ts
+const socials = [
+  { label: "GitHub", href: profile.github },
+  { label: "X", href: profile.x },
+  { label: "LinkedIn", href: profile.linkedin },
+].filter((s) => s.href);
 ---
 
 <Base>
@@ -40,8 +50,32 @@ const devProjects = projects.filter((p) => p.status === "dev");
       </div>
     </Section>
 
-    <Section id="about" label="about — phase 5">
-      <p style="color: var(--text-muted); margin: 0;">About + contact go here.</p>
+    <Section label="capabilities">
+      <ul class="chips">
+        {capabilities.map((c) => <li><Chip>{c}</Chip></li>)}
+      </ul>
+    </Section>
+
+    <Section id="about" label="about">
+      <p class="about-copy">{profile.about}</p>
+    </Section>
+
+    <Section id="contact" label="contact">
+      <p class="contact-line">{profile.contactLine}</p>
+      <div class="contact-actions">
+        <Button variant="primary" href={`mailto:${profile.email}`}>
+          {profile.email}
+        </Button>
+      </div>
+      <ul class="contact-links mono">
+        {
+          socials.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
+            </li>
+          ))
+        }
+      </ul>
     </Section>
   </main>
 
@@ -97,5 +131,59 @@ const devProjects = projects.filter((p) => p.status === "dev");
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
+  }
+
+  /* Capabilities — flat mono chip strip, no colour */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* About — single readable column */
+  .about-copy {
+    max-width: 640px;
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  /* Contact */
+  .contact-line {
+    max-width: 480px;
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .contact-actions {
+    margin-top: 1.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+  }
+
+  .contact-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .contact-links a:hover {
+    color: var(--text);
+  }
+
+  .contact-links a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
   }
 </style>

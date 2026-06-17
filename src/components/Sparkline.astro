@@ -1,0 +1,57 @@
+---
+// Flat market-line sparkline. The ONE signature motion: it draws itself in
+// on load via stroke-dashoffset. No glow, no gradient, flat accent stroke.
+// Polyline length is ~727 (x-step 60, 13 points); --len overestimates slightly
+// so the line is fully drawn exactly as the animation ends.
+const points = [
+  [0, 44], [60, 40], [120, 46], [180, 34], [240, 38], [300, 28],
+  [360, 32], [420, 22], [480, 30], [540, 18], [600, 24], [660, 14], [720, 20],
+]
+  .map((p) => p.join(","))
+  .join(" ");
+---
+
+<svg
+  class="spark"
+  viewBox="0 0 720 64"
+  preserveAspectRatio="none"
+  role="img"
+  aria-label="Stylised market sparkline"
+>
+  <polyline points={points} />
+</svg>
+
+<style>
+  .spark {
+    display: block;
+    width: 100%;
+    height: 56px;
+  }
+
+  .spark polyline {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.55;
+    vector-effect: non-scaling-stroke;
+    --len: 730;
+    stroke-dasharray: var(--len);
+    stroke-dashoffset: var(--len);
+    animation: spark-draw 1.2s ease forwards;
+  }
+
+  @keyframes spark-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spark polyline {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

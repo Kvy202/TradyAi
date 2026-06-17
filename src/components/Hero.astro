@@ -1,0 +1,78 @@
+---
+import Section from "./Section.astro";
+import Button from "./Button.astro";
+import StatusDot from "./StatusDot.astro";
+import Sparkline from "./Sparkline.astro";
+import { profile } from "../data/profile";
+import { projects } from "../data/projects";
+
+const liveCount = projects.filter((p) => p.status === "live").length;
+const devCount = projects.filter((p) => p.status === "dev").length;
+const pulse = projects.find((p) => p.short === "PULSE");
+---
+
+<Section id="top">
+  <div class="hero">
+    <p class="kicker mono">
+      <StatusDot status="live" />
+      <span>SYSTEM ONLINE · {liveCount} LIVE, {devCount} IN DEV</span>
+    </p>
+
+    <h1 class="headline">{profile.headline}</h1>
+
+    <p class="subline">{profile.subline}</p>
+
+    <div class="ctas">
+      <Button variant="primary" href="#work">Explore work</Button>
+      <Button variant="ghost" href={pulse?.url} external arrow="external">
+        Launch Pulse
+      </Button>
+    </div>
+
+    <div class="spark-wrap">
+      <Sparkline />
+    </div>
+  </div>
+</Section>
+
+<style>
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .headline {
+    max-width: 640px;
+    margin: 1.5rem 0 0;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .subline {
+    max-width: 460px;
+    margin: 1.25rem 0 0;
+    font-size: 16px;
+    color: var(--text-muted);
+  }
+
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .spark-wrap {
+    max-width: 720px;
+    margin-top: 3.5rem;
+  }
+</style>

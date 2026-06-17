@@ -7,10 +7,10 @@ export const profile = {
     "I build AI-powered tools for trading, crypto, and market psychology — end to end, on my own. Two products are live; more are in development. My focus is combining machine intelligence, real-time data, and clean product design into tools that feel precise and actually useful.", // TODO: make it yours
   contactLine:
     "Open to collaborations, interesting problems, and good conversations about markets and AI.", // TODO: make it yours
-  email: "TODO@tradyai.live",
+  email: "yogesh0152@gmail.com",
   github: "https://github.com/Kvy202",
   x: "", // TODO
-  linkedin: "", // TODO
+  linkedin: "https://www.linkedin.com/in/yogesh-yadav-6b3000267?utm_source=share_via&utm_content=profile&utm_medium=member_android", // TODO
 };
 
 // Capabilities chip strip — edit to taste.

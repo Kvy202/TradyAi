@@ -1,0 +1,134 @@
+/* Interactive terminal island. Mono, flat, on-brand. No decorative accent:
+   the caret and focus ring are the only (functional) accent moments. */
+
+.term-launcher {
+  position: fixed;
+  right: clamp(16px, 4vw, 28px);
+  bottom: clamp(16px, 4vw, 28px);
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.5rem 0.8rem;
+  font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.term-launcher:hover {
+  color: var(--text);
+  border-color: var(--text-faint);
+}
+
+.term-launcher:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.term-panel {
+  position: fixed;
+  right: clamp(16px, 4vw, 28px);
+  bottom: clamp(16px, 4vw, 28px);
+  z-index: 61;
+  width: min(440px, calc(100vw - 32px));
+  height: min(360px, calc(100vh - 120px));
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.term-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-faint);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.term-close {
+  background: transparent;
+  border: 0;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.35rem;
+  transition: color 150ms ease;
+}
+
+.term-close:hover {
+  color: var(--text);
+}
+
+.term-close:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.term-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  line-height: 1.5;
+}
+
+.term-line {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.term-line.is-cmd {
+  color: var(--text);
+}
+.term-line.is-out {
+  color: var(--text-muted);
+}
+.term-line.is-sys {
+  color: var(--text-faint);
+}
+
+.term-inputrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6ch;
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+.term-prompt {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.term-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  caret-color: var(--accent);
+}

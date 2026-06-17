@@ -1,0 +1,68 @@
+---
+import StatusDot from "./StatusDot.astro";
+import { projects } from "../data/projects";
+
+const liveCount = projects.filter((p) => p.status === "live").length;
+---
+
+<aside class="syspanel mono" aria-label="System status overview">
+  <div class="syspanel-head">
+    <span>SYSTEM</span>
+    <span>{liveCount} live</span>
+  </div>
+  <ul class="syspanel-list">
+    {
+      projects.map((p) => (
+        <li class="sysrow">
+          <StatusDot status={p.status} />
+          <span class="sys-short">{p.short}</span>
+          <span class="sys-state">{p.status === "live" ? "live" : "in dev"}</span>
+        </li>
+      ))
+    }
+  </ul>
+</aside>
+
+<style>
+  .syspanel {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 12px;
+  }
+
+  .syspanel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--text-faint);
+  }
+
+  .syspanel-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.3rem 0;
+  }
+
+  .sysrow {
+    display: grid;
+    grid-template-columns: 10px 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .sys-short {
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .sys-state {
+    color: var(--text-faint);
+  }
+</style>

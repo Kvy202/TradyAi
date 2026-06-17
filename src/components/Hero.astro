@@ -3,6 +3,7 @@ import Section from "./Section.astro";
 import Button from "./Button.astro";
 import StatusDot from "./StatusDot.astro";
 import Sparkline from "./Sparkline.astro";
+import SystemPanel from "./SystemPanel.astro";
 import { profile } from "../data/profile";
 import { projects } from "../data/projects";
 
@@ -13,29 +14,40 @@ const pulse = projects.find((p) => p.short === "PULSE");
 
 <Section id="top">
   <div class="hero">
-    <p class="kicker mono">
-      <StatusDot status="live" />
-      <span>SYSTEM ONLINE · {liveCount} LIVE, {devCount} IN DEV</span>
-    </p>
+    <div class="hero-main">
+      <p class="kicker mono">
+        <StatusDot status="live" />
+        <span>SYSTEM ONLINE · {liveCount} LIVE, {devCount} IN DEV</span>
+      </p>
 
-    <h1 class="headline">{profile.headline}</h1>
+      <h1 class="headline">{profile.headline}</h1>
 
-    <p class="subline">{profile.subline}</p>
+      <p class="subline">{profile.subline}</p>
 
-    <div class="ctas">
-      <Button variant="primary" href="#work">Explore work</Button>
-      <Button variant="ghost" href={pulse?.url} external arrow="external">
-        Launch Pulse
-      </Button>
+      <div class="ctas">
+        <Button variant="primary" href="#work">Explore work</Button>
+        <Button variant="ghost" href={pulse?.url} external arrow="external">
+          Launch Pulse
+        </Button>
+      </div>
     </div>
 
-    <div class="spark-wrap">
-      <Sparkline />
-    </div>
+    <SystemPanel />
+  </div>
+
+  <div class="spark-wrap">
+    <Sparkline />
   </div>
 </Section>
 
 <style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(248px, 30%, 320px);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
   .kicker {
     display: inline-flex;
     align-items: center;
@@ -48,7 +60,7 @@ const pulse = projects.find((p) => p.short === "PULSE");
   }
 
   .headline {
-    max-width: 640px;
+    max-width: 600px;
     margin: 1.5rem 0 0;
     font-size: clamp(28px, 5vw, 44px);
     font-weight: 500;
@@ -71,8 +83,15 @@ const pulse = projects.find((p) => p.short === "PULSE");
     margin-top: 2rem;
   }
 
+  /* Sparkline spans the full hero width as a baseline. */
   .spark-wrap {
-    max-width: 720px;
-    margin-top: 3.5rem;
+    margin-top: clamp(2.5rem, 6vh, 4rem);
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
   }
 </style>

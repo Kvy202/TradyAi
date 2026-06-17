@@ -37,44 +37,54 @@ const socials = [
   <main>
     <Hero />
 
-    <Section id="work" label="work">
+    <Section id="work" index="01" label="work" desc="live products">
       <div class="cards">
         {liveProjects.map((p) => <ProductCard project={p} />)}
       </div>
     </Section>
 
-    <Section id="building" label="building">
+    <Section id="building" index="02" label="building" desc="in development">
       <div class="building-panel">
         {devProjects.map((p) => <StatusRow project={p} />)}
       </div>
     </Section>
 
-    <Section label="capabilities">
+    <Section index="03" label="capabilities" desc="stack & focus">
       <ul class="chips">
         {capabilities.map((c) => <li><Chip>{c}</Chip></li>)}
       </ul>
     </Section>
 
-    <Section id="about" label="about">
-      <p class="about-copy">{profile.about}</p>
+    <Section id="about" index="04" label="about" desc="the short version">
+      <div class="about-grid">
+        <p class="about-copy">{profile.about}</p>
+        <ul class="about-facts mono">
+          <li><span class="fk">focus</span><span class="fv">trading · crypto · market psychology</span></li>
+          <li><span class="fk">status</span><span class="fv">{liveProjects.length} live · {devProjects.length} in dev</span></li>
+          <li><span class="fk">stack</span><span class="fv">{capabilities.length} technologies</span></li>
+          <li><span class="fk">mode</span><span class="fv">solo · end-to-end</span></li>
+        </ul>
+      </div>
     </Section>
 
-    <Section id="contact" label="contact">
-      <p class="contact-line">{profile.contactLine}</p>
-      <div class="contact-actions">
-        <Button variant="primary" href={`mailto:${profile.email}`}>
-          {profile.email}
-        </Button>
+    <Section id="contact" index="05" label="contact" desc="get in touch">
+      <div class="contact-card">
+        <p class="contact-line">{profile.contactLine}</p>
+        <div class="contact-actions">
+          <Button variant="primary" href={`mailto:${profile.email}`}>
+            {profile.email}
+          </Button>
+        </div>
+        <ul class="contact-links mono">
+          {
+            socials.map((s) => (
+              <li>
+                <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
-      <ul class="contact-links mono">
-        {
-          socials.map((s) => (
-            <li>
-              <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
-            </li>
-          ))
-        }
-      </ul>
     </Section>
   </main>
 
@@ -113,22 +123,72 @@ const socials = [
     list-style: none;
   }
 
-  /* About — single readable column */
+  /* About — prose + a compact facts column */
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 30%, 300px);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
   .about-copy {
     max-width: 640px;
     margin: 0;
     color: var(--text-muted);
   }
 
-  /* Contact */
+  .about-facts {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+  }
+
+  .about-facts li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .about-facts li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .about-facts .fk {
+    color: var(--text-faint);
+    flex-shrink: 0;
+  }
+
+  .about-facts .fv {
+    color: var(--text-muted);
+    text-align: right;
+  }
+
+  @media (max-width: 720px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Contact — tidy bordered block */
+  .contact-card {
+    max-width: 520px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
   .contact-line {
-    max-width: 480px;
     margin: 0;
     color: var(--text-muted);
   }
 
   .contact-actions {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
 
   .contact-links {

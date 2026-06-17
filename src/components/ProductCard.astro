@@ -59,6 +59,11 @@ const stateLabel = project.status === "live" ? "live" : "in dev";
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.5rem;
+    transition: background 150ms ease;
+  }
+
+  .card:hover {
+    background: var(--bg-chrome);
   }
 
   .card-head {

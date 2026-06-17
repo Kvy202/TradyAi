@@ -23,7 +23,7 @@
   /* Layout */
   --container: 1100px;
   --container-pad: clamp(20px, 5vw, 40px);
-  --section-pad: clamp(64px, 10vh, 120px);
+  --section-pad: clamp(56px, 7vh, 96px);
 
   color-scheme: dark;
 }

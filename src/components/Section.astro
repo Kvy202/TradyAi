@@ -1,16 +1,27 @@
 ---
 interface Props {
   id?: string;
+  index?: string; // e.g. "01"
   label?: string;
+  desc?: string; // optional right-aligned descriptor
   class?: string;
 }
 
-const { id, label, class: className } = Astro.props;
+const { id, index, label, desc, class: className } = Astro.props;
 ---
 
 <section id={id} class:list={["section", className]}>
   <div class="container">
-    {label && <h2 class="mono section-label">{label}</h2>}
+    {
+      label && (
+        <div class="section-head">
+          {index && <span class="section-index mono">{index}</span>}
+          <h2 class="section-label mono">{label}</h2>
+          <span class="section-rule" aria-hidden="true" />
+          {desc && <span class="section-desc mono">{desc}</span>}
+        </div>
+      )
+    }
     <slot />
   </div>
 </section>
@@ -27,12 +38,47 @@ const { id, label, class: className } = Astro.props;
     padding-inline: var(--container-pad);
   }
 
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0 0 2.5rem;
+  }
+
+  .section-index {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    flex-shrink: 0;
+  }
+
   .section-label {
-    margin: 0 0 1.75rem;
+    margin: 0;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-desc {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--text-faint);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 520px) {
+    .section-desc {
+      display: none;
+    }
   }
 </style>

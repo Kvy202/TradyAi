@@ -19,7 +19,7 @@ export const projects: Project[] = [
     tech: ["React", "Socket.io", "Node.js", "MongoDB"],
     status: "live",
     url: "https://pulse.tradyai.live",
-    repo: "https://github.com/Kvy202",
+    repo: "https://github.com/Kvy202/PULSE",
   },
   {
     short: "MIRROR",
@@ -40,7 +40,7 @@ export const projects: Project[] = [
       "A personal AI trading assistant: FastAPI backend on AWS, a native Android app, and Gemini-powered market reasoning.",
     tech: ["FastAPI", "Python", "Kotlin", "AWS", "Gemini"],
     status: "dev",
-    repo: "https://github.com/Kvy202",
+    repo: "https://github.com/Kvy202/Trady",
   },
   {
     short: "HL-BOT",

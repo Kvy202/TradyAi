@@ -1,13 +1,10 @@
 @import "tailwindcss";
 
-/* Self-hosted variable fonts (Fontsource) */
+/* Self-hosted variable fonts */
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/jetbrains-mono";
 
-/* ─────────────────────────────────────────────
-   Design tokens (LOCKED) — dark in all cases.
-   See build spec Section 3.
-   ───────────────────────────────────────────── */
+/* Design tokens */
 :root {
   --bg: #0b0d11;          /* page background */
   --bg-elev: #0e1116;     /* elevated panels / cards */
@@ -16,9 +13,9 @@
   --border-soft: #181c22; /* faint dividers */
   --text: #eef1f4;        /* primary text */
   --text-muted: #8b939e;  /* secondary text */
-  --text-faint: #828a94;  /* tertiary / metadata — lightened from #5b626c to pass WCAG AA */
-  --accent: #34e3a4;      /* THE accent (mint-green) */
-  --down: #ef6f6c;        /* negative price delta only */
+  --text-faint: #828a94;  /* tertiary / metadata */
+  --accent: #34e3a4;      /* accent (mint-green) */
+  --down: #ef6f6c;        /* negative delta */
 
   /* Layout */
   --container: 1100px;
@@ -61,8 +58,7 @@ body {
   border: 0;
 }
 
-/* Visible focus baseline for keyboard users. Low specificity (:where) so
-   component-level focus styles can refine it; outline is always present. */
+/* Focus ring for keyboard users */
 :where(a, button, input, summary, [tabindex]):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;

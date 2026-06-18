@@ -25,13 +25,10 @@ const socials = [
 ---
 
 <Base>
-  {/* Live crypto ticker (CoinGecko). Hides cleanly on failure — never fake numbers. */}
   <Ticker client:load />
 
   <Nav />
 
-  {/* Floating interactive terminal. Placed high in the DOM so client:visible
-      hydrates on load; the launcher is position:fixed (bottom-right). */}
   <Terminal client:visible />
 
   <main>

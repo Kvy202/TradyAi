@@ -1,6 +1,6 @@
 export type Project = {
-  short: string; // PULSE
-  name: string; // Pulse
+  short: string;
+  name: string;
   tagline: string;
   description: string;
   tech: string[];
@@ -19,7 +19,7 @@ export const projects: Project[] = [
     tech: ["React", "Socket.io", "Node.js", "MongoDB"],
     status: "live",
     url: "https://pulse.tradyai.live",
-    repo: "https://github.com/Kvy202", // TODO: link the specific repo
+    repo: "https://github.com/Kvy202",
   },
   {
     short: "MIRROR",
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     tagline: "The crowd is reading you",
     description:
       "A behavioural insight engine that reflects crowd psychology and social patterns back at the visitor.",
-    tech: ["React", "Node.js", "MongoDB"], // TODO: confirm stack
+    tech: ["React", "Node.js", "MongoDB"],
     status: "live",
     url: "https://mirror.tradyai.live",
     repo: "https://github.com/Kvy202",
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     tagline: "Decentralised trading automation",
     description:
       "An automated trading bot with support for the Hyperliquid decentralised exchange.",
-    tech: ["Python", "Hyperliquid", "Web3"], // TODO: confirm stack
+    tech: ["Python", "Hyperliquid", "Web3"],
     status: "dev",
     repo: "https://github.com/Kvy202",
   },
@@ -56,8 +56,9 @@ export const projects: Project[] = [
     short: "CHESS",
     name: "Chess",
     tagline: "Realtime multiplayer chess",
-    description: "A multiplayer chess app.", // TODO: expand + confirm
-    tech: ["TODO"],
+    description:
+      "A realtime multiplayer chess app — live games synced over WebSockets.",
+    tech: ["React", "WebSocket", "Node.js"],
     status: "dev",
     repo: "https://github.com/Kvy202",
   },

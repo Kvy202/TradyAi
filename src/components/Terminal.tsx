@@ -201,7 +201,8 @@ export default function Terminal() {
         aria-label={open ? "Close terminal" : "Open terminal"}
         hidden={open}
       >
-        <span aria-hidden="true">{"> _"}</span>
+        <span className="term-cue" aria-hidden="true">{">_"}</span>
+        <span className="term-label">terminal</span>
       </button>
 
       {open && (

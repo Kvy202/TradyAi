@@ -1,11 +1,12 @@
 ---
 import { profile } from "../data/profile";
+import BrandMark from "./BrandMark.astro";
 ---
 
 <header class="nav">
   <div class="nav-inner">
     <a class="wordmark mono" href="#top" aria-label={`${profile.wordmark} — home`}>
-      <span class="mark" aria-hidden="true"></span>
+      <BrandMark />
       <span>{profile.wordmark}</span>
     </a>
 
@@ -51,14 +52,6 @@ import { profile } from "../data/profile";
     color: var(--text);
     text-decoration: none;
     letter-spacing: 0.01em;
-  }
-
-  .mark {
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 1px;
-    flex-shrink: 0;
   }
 
   .nav-links {

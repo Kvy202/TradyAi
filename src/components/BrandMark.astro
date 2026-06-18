@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={["brandmark", className]}
+  width="14"
+  height="14"
+  viewBox="0 0 16 16"
+  fill="none"
+  aria-hidden="true"
+>
+  <path d="M4 3.5 8.5 8 4 12.5" />
+  <path d="M9 12.5h3.5" />
+</svg>
+
+<style>
+  .brandmark {
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .brandmark path {
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>

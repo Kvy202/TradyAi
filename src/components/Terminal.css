@@ -1,5 +1,4 @@
-/* Interactive terminal island. Mono, flat, on-brand. No decorative accent:
-   the caret and focus ring are the only (functional) accent moments. */
+/* Terminal launcher + panel */
 
 .term-launcher {
   position: fixed;
@@ -8,23 +7,37 @@
   z-index: 60;
   display: inline-flex;
   align-items: center;
-  gap: 0.5ch;
-  padding: 0.5rem 0.8rem;
+  gap: 0.6ch;
+  padding: 0.6rem 1rem;
   font-family: "JetBrains Mono Variable", ui-monospace, monospace;
   font-size: 13px;
-  color: var(--text-muted);
-  background: var(--bg-elev);
+  background: var(--bg-chrome);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 9px;
   cursor: pointer;
   transition:
-    color 150ms ease,
-    border-color 150ms ease;
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.term-cue {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.term-label {
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  transition: color 150ms ease;
 }
 
 .term-launcher:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.term-launcher:hover .term-label {
   color: var(--text);
-  border-color: var(--text-faint);
 }
 
 .term-launcher:focus-visible {

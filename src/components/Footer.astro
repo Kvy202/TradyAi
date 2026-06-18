@@ -1,5 +1,6 @@
 ---
 import { profile } from "../data/profile";
+import BrandMark from "./BrandMark.astro";
 
 const year = new Date().getFullYear();
 ---
@@ -7,7 +8,7 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="footer-inner">
     <a class="wordmark mono" href="#top" aria-label={`${profile.wordmark} — home`}>
-      <span class="mark" aria-hidden="true"></span>
+      <BrandMark />
       <span>{profile.wordmark}</span>
     </a>
 
@@ -45,14 +46,6 @@ const year = new Date().getFullYear();
     font-size: 14px;
     color: var(--text);
     text-decoration: none;
-  }
-
-  .mark {
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 1px;
-    flex-shrink: 0;
   }
 
   .footer-links {

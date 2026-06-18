@@ -1,8 +1,7 @@
 ---
-// Flat market-line sparkline. The ONE signature motion: it draws itself in
-// on load via stroke-dashoffset. No glow, no gradient, flat accent stroke.
-// Polyline length is ~727 (x-step 60, 13 points); --len overestimates slightly
-// so the line is fully drawn exactly as the animation ends.
+// A flat market line that draws itself in on load (stroke-dashoffset).
+// --len slightly overestimates the ~727px polyline length so the draw
+// completes right as the animation ends.
 const points = [
   [0, 44], [60, 40], [120, 46], [180, 34], [240, 38], [300, 28],
   [360, 32], [420, 22], [480, 30], [540, 18], [600, 24], [660, 14], [720, 20],

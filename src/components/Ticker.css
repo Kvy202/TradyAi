@@ -1,6 +1,4 @@
-/* Live crypto ticker strip. Marquee is functional, not decorative; it freezes
-   under prefers-reduced-motion. Accent only on positive deltas, --down on
-   negative — per the design system. */
+/* Live crypto ticker strip */
 
 .tick {
   background: var(--bg);

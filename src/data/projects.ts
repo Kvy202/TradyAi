@@ -30,7 +30,7 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "MongoDB"],
     status: "live",
     url: "https://mirror.tradyai.live",
-    repo: "https://github.com/Kvy202",
+    repo: "https://github.com/Kvy202/MIRROR",
   },
   {
     short: "TRADY",

@@ -45,21 +45,22 @@ export const projects: Project[] = [
   {
     short: "HL-BOT",
     name: "Hyperliquid bot",
-    tagline: "Decentralised trading automation",
+    tagline: "Risk-managed AI trading bot",
     description:
-      "An automated trading bot with support for the Hyperliquid decentralised exchange.",
-    tech: ["Python", "Hyperliquid", "Web3"],
-    status: "dev",
-    repo: "https://github.com/Kvy202",
+      "A risk-managed AI trading bot on Hyperliquid (official SDK): ML/DL signals, modular exchange adapters, and safety-first guardrails — running on AWS.",
+    tech: ["Python", "Hyperliquid", "ML / DL", "AWS"],
+    status: "live",
+    repo: "https://github.com/Kvy202/Ai-Trading-Bot-HQ",
   },
   {
     short: "CHESS",
     name: "Chess",
-    tagline: "Realtime multiplayer chess",
+    tagline: "Adaptive-AI multiplayer chess",
     description:
-      "A realtime multiplayer chess app — live games synced over WebSockets.",
-    tech: ["React", "WebSocket", "Node.js"],
-    status: "dev",
-    repo: "https://github.com/Kvy202",
+      "Full-stack chess with accounts, online & local multiplayer, live Stockfish analysis, and an AI that scales to your skill — plus an XP-based leveling system.",
+    tech: ["React", "TypeScript", "Node.js", "WebSocket", "Stockfish"],
+    status: "live",
+    url: "https://chess.tradyai.live",
+    repo: "https://github.com/Kvy202/Chess",
   },
 ];

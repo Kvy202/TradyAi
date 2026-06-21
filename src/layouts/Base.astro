@@ -23,6 +23,9 @@ const ogImage = new URL("/og.svg", site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0b0d11" />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
 
     <title>{title}</title>
     <meta name="description" content={description} />

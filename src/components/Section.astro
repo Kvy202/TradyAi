@@ -14,7 +14,7 @@ const { id, index, label, desc, class: className } = Astro.props;
   <div class="container">
     {
       label && (
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           {index && <span class="section-index mono">{index}</span>}
           <h2 class="section-label mono">{label}</h2>
           <span class="section-rule" aria-hidden="true" />

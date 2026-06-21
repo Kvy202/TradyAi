@@ -15,16 +15,16 @@ const pulse = projects.find((p) => p.short === "PULSE");
 <Section id="top">
   <div class="hero">
     <div class="hero-main">
-      <p class="kicker mono">
+      <p class="kicker mono" data-reveal>
         <StatusDot status="live" />
         <span>SYSTEM ONLINE · {liveCount} LIVE, {devCount} IN DEV</span>
       </p>
 
-      <h1 class="headline">{profile.headline}</h1>
+      <h1 class="headline" data-reveal style="--reveal-delay:60ms">{profile.headline}</h1>
 
-      <p class="subline">{profile.subline}</p>
+      <p class="subline" data-reveal style="--reveal-delay:120ms">{profile.subline}</p>
 
-      <div class="ctas">
+      <div class="ctas" data-reveal style="--reveal-delay:180ms">
         <Button variant="primary" href="#work">Explore work</Button>
         <Button variant="ghost" href={pulse?.url} external arrow="external">
           Launch Pulse
@@ -32,7 +32,9 @@ const pulse = projects.find((p) => p.short === "PULSE");
       </div>
     </div>
 
-    <SystemPanel />
+    <div class="hero-aside" data-reveal style="--reveal-delay:240ms">
+      <SystemPanel />
+    </div>
   </div>
 
   <div class="spark-wrap">

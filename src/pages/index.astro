@@ -35,25 +35,25 @@ const socials = [
     <Hero />
 
     <Section id="work" index="01" label="work" desc="live products">
-      <div class="cards">
+      <div class="cards" data-reveal>
         {liveProjects.map((p) => <ProductCard project={p} />)}
       </div>
     </Section>
 
     <Section id="building" index="02" label="building" desc="in development">
-      <div class="building-panel">
+      <div class="building-panel" data-reveal>
         {devProjects.map((p) => <StatusRow project={p} />)}
       </div>
     </Section>
 
     <Section index="03" label="capabilities" desc="stack & focus">
-      <ul class="chips">
+      <ul class="chips" data-reveal>
         {capabilities.map((c) => <li><Chip>{c}</Chip></li>)}
       </ul>
     </Section>
 
     <Section id="about" index="04" label="about" desc="the short version">
-      <div class="about-grid">
+      <div class="about-grid" data-reveal>
         <p class="about-copy">{profile.about}</p>
         <ul class="about-facts mono">
           <li><span class="fk">focus</span><span class="fv">trading · crypto · market psychology</span></li>
@@ -65,7 +65,7 @@ const socials = [
     </Section>
 
     <Section id="contact" index="05" label="contact" desc="get in touch">
-      <div class="contact-card">
+      <div class="contact-card" data-reveal>
         <p class="contact-line">{profile.contactLine}</p>
         <div class="contact-actions">
           <Button variant="primary" href={`mailto:${profile.email}`}>
@@ -87,6 +87,27 @@ const socials = [
 
   <Footer />
 </Base>
+
+<script>
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const els = document.querySelectorAll("[data-reveal]");
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach((e) => e.classList.add("in"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries) {
+          if (en.isIntersecting) {
+            en.target.classList.add("in");
+            io.unobserve(en.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
+    els.forEach((e) => io.observe(e));
+  }
+</script>
 
 <style>
   /* Work — two cards side by side, stacked on mobile */

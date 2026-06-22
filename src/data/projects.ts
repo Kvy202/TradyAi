@@ -50,6 +50,7 @@ export const projects: Project[] = [
       "A risk-managed AI trading bot on Hyperliquid (official SDK): ML/DL signals, modular exchange adapters, and safety-first guardrails — running on AWS.",
     tech: ["Python", "Hyperliquid", "ML / DL", "AWS"],
     status: "live",
+    url: "https://trading-bot.tradyai.live",
     repo: "https://github.com/Kvy202/Ai-Trading-Bot-HQ",
   },
   {
